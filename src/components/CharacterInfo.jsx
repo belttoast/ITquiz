@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import asaImg from '../assets/asa.png';
 import yoruImg from '../assets/yoru.jpg';
+import asaMomImg from '../assets/asa-mom.jpg';
 
 function CharacterInfo() {
   const [character, setCharacter] = useState('asa'); // 'asa' or 'yoru'
@@ -59,6 +60,17 @@ function CharacterInfo() {
                     <p><span className="highlight-text">การอยู่ร่วมกับปีศาจสงคราม (War Devil Symbiosis):</span> เธอได้รับศักยภาพในการต่อสู้ที่เพิ่มขึ้น รวมถึงคุณสมบัติในการเอาชีวิตรอดที่คล้ายกับมนุษย์ลูกผสมผ่านพลังของโยรุ</p>
                   </div>
                 </section>
+
+                <section className="info-section">
+                  <h2>Family: Mother</h2>
+                  <div className="section-body">
+                    <img src={asaMomImg} alt="Asa's Mother" className="family-img" />
+                    <p><span className="highlight-text">ชื่อ:</span> UNKNOWN</p>
+                    <p><span className="highlight-text">ข้อมูลทั่วไปสถานะ:</span> เสียชีวิตแล้ว</p>
+                    <p><span className="highlight-text">การเสียชีวิต:</span> ถูก (ปีศาจไต้ฝุ่น) ฆ่าตายในอดีตหลายปีก่อน</p>
+                    <p><span className="highlight-text">ลักษณะ:</span> หน้าตาคล้ายกับอาสะมาก แต่รูปร่างสูงในตอนที่เสียชีวิต</p>
+                  </div>
+                </section>
               </div>
             </>
           ) : (
@@ -91,6 +103,16 @@ function CharacterInfo() {
                     <p><span className="highlight-text">เป้าหมายหลัก:</span> เป้าหมายหลักของเธอคือการตามล่าและเอาชนะเชนซอว์แมน เพื่อทำให้มนุษยชาติกลับมาเกรงกลัวสงครามอีกครั้ง โดยเฉพาะการนำอาวุธนิวเคลียร์กลับคืนมา</p>
                     <p><span className="highlight-text">พฤติกรรม:</span> โดยทั่วไปโยรุมีแรงขับเคลื่อนจากความหยิ่งทะนง ความต้องการการยอมรับแบบเด็ก ๆ และความกลัวอย่างลึกซึ้งว่าจะถูกลบหายไปจากการมีอยู่ มากกว่าการเป็นผู้บงการที่เย็นชาและคำนวณทุกอย่าง</p>
                     <p><span className="highlight-text">ความสัมพันธ์กับอาสะ:</span> เธออาศัยอยู่ในร่างเดียวกับอาสะ และมักทะเลาะ โต้เถียง หรือสร้างสถานการณ์ที่น่าอึดอัดร่วมกัน เช่น การพยายามเปลี่ยนเด็นจิให้กลายเป็นอาวุธ</p>
+                  </div>
+                </section>
+
+                <section className="info-section">
+                  <h2>Family: Sisters</h2>
+                  <div className="section-body">
+                    <p><span className="highlight-text">Makima – ปีศาจควบคุม:</span> ตัวแทนของความกลัวการถูกควบคุมและครอบงำ</p>
+                    <p><span className="highlight-text">Yoru – ปีศาจสงคราม:</span> ตัวแทนของความกลัวสงครามและความขัดแย้ง</p>
+                    <p><span className="highlight-text">Fami – ปีศาจความอดอยาก:</span> ตัวแทนของความกลัวความหิวโหยและการขาดแคลน</p>
+                    <p><span className="highlight-text">Lil D:</span> ตัวแทนของความกลัวความตาย และเป็นพี่สาวคนโตของเหล่าจตุรอาชา</p>
                   </div>
                 </section>
               </div>

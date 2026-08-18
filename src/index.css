@@ -250,6 +250,16 @@ body {
   background: rgba(255,255,255,0.1);
 }
 
+.family-img {
+  width: 100%;
+  max-width: 250px;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  display: block;
+}
+
 .yoru-mode .info-section h2 {
   color: #ff0033;
 }
