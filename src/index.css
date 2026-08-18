@@ -127,11 +127,11 @@ body {
 }
 
 /* --- YORU MODE OVERRIDES --- */
-.yoru-mode {
+.character-container.yoru-mode {
   flex-direction: row-reverse;
 }
 
-.yoru-mode .character-showcase {
+.character-container.yoru-mode .character-showcase {
   justify-content: flex-start;
   padding-right: 0;
   padding-left: 0;
@@ -272,6 +272,7 @@ body {
   align-items: center;
   justify-content: center;
   padding: 4rem;
+  gap: 4rem; /* Ensure gap between image and text */
   background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 40%, rgba(0,0,0,0.95) 100%);
   position: relative;
   z-index: 5;
@@ -279,10 +280,9 @@ body {
 }
 
 .family-image-wrapper {
-  flex: 1;
   display: flex;
   justify-content: flex-end;
-  padding-right: 4rem;
+  /* Removed flex: 1 and padding-right so it wraps the image tightly */
 }
 
 .family-hero-img {
@@ -298,7 +298,7 @@ body {
 }
 
 .family-content-wrapper {
-  flex: 1;
+  flex: 1; /* Take up all remaining space */
   display: flex;
   justify-content: flex-start;
 }
