@@ -58,12 +58,30 @@ body {
     linear-gradient(0deg, rgba(5,5,5,0.9) 0%, rgba(5,5,5,0) 30%);
 }
 
+/* Pure Black Background for Yoru Mode */
+.yoru-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000000;
+  z-index: -1; /* Just above the gif but behind content */
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+  pointer-events: none;
+}
+.yoru-bg.active {
+  opacity: 1;
+}
+
 /* --- Character Info Layout --- */
 .character-container {
   width: 100%;
   height: 100%;
   position: relative;
   display: flex;
+  transition: all 0.8s ease-in-out;
 }
 
 /* Center Image Showcase */
@@ -79,6 +97,7 @@ body {
   align-items: flex-end;
   pointer-events: none; /* Let clicks pass through to background */
   z-index: 1;
+  transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .character-hero-img {
@@ -91,9 +110,43 @@ body {
   /* Fade her out at the bottom so she blends into the dark environment */
   mask-image: linear-gradient(to top, transparent 2%, black 20%);
   -webkit-mask-image: linear-gradient(to top, transparent 2%, black 20%);
+  transition: all 1.2s ease;
 }
 
-/* Left Sidebar Content */
+/* --- YORU MODE OVERRIDES --- */
+.yoru-mode {
+  flex-direction: row-reverse;
+}
+
+.yoru-mode .character-showcase {
+  justify-content: flex-start;
+  padding-right: 0;
+  padding-left: 0;
+  align-items: center; /* Center vertically for Yoru */
+}
+
+.yoru-mode .character-hero-img {
+  height: 100vh; /* Yoru is a full vertical portrait */
+  object-fit: contain;
+  object-position: left center;
+  transform-origin: left center;
+  filter: brightness(0.8) contrast(1.2) drop-shadow(0 0 40px rgba(255, 0, 0, 0.15));
+  mask-image: linear-gradient(to right, black 50%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, black 50%, transparent 100%);
+  animation: revealRight 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards, pulseRed 8s ease-in-out infinite alternate;
+}
+
+.yoru-title {
+  color: #ff0033 !important;
+  background: none !important;
+  -webkit-text-fill-color: #ff0033 !important;
+  letter-spacing: 2px !important;
+}
+.yoru-subtitle {
+  color: #a00022 !important;
+}
+
+/* Left Sidebar Content (Becomes Right in Yoru Mode) */
 .content-sidebar {
   position: relative;
   z-index: 2;
@@ -103,6 +156,16 @@ body {
   padding: 4rem 3rem 0 5rem;
   display: flex;
   flex-direction: column;
+  transition: all 0.8s ease;
+}
+
+.yoru-mode .content-sidebar {
+  padding: 4rem 5rem 0 3rem;
+  text-align: right;
+}
+
+.yoru-mode .info-section h2 {
+  flex-direction: row-reverse;
 }
 
 .character-name {
@@ -134,9 +197,14 @@ body {
   flex: 1;
   overflow-y: auto;
   padding-right: 2rem;
-  padding-bottom: 4rem;
+  padding-bottom: 6rem; /* Extra padding for the switch button */
   mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
   -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+}
+
+.yoru-mode .scroll-area {
+  padding-right: 0;
+  padding-left: 2rem;
 }
 
 /* Custom Scrollbar for sleekness */
@@ -149,6 +217,9 @@ body {
 .scroll-area::-webkit-scrollbar-thumb {
   background: rgba(255,255,255,0.2);
   border-radius: 10px;
+}
+.yoru-mode .scroll-area::-webkit-scrollbar-thumb {
+  background: #ff0033;
 }
 
 .info-section {
@@ -179,6 +250,13 @@ body {
   background: rgba(255,255,255,0.1);
 }
 
+.yoru-mode .info-section h2 {
+  color: #ff0033;
+}
+.yoru-mode .info-section h2::after {
+  background: rgba(255, 0, 51, 0.2);
+}
+
 .section-body {
   font-size: 1.05rem;
   line-height: 1.7;
@@ -194,6 +272,52 @@ body {
   color: #fff;
   font-weight: 500;
 }
+.yoru-mode .highlight-text {
+  color: #ffb3c1;
+}
+
+/* Switch Button */
+.switch-btn {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  padding: 0.8rem 2.5rem;
+  border-radius: 30px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  letter-spacing: 3px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.switch-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateX(-50%) translateY(-3px);
+  box-shadow: 0 15px 25px rgba(0,0,0,0.5);
+}
+
+.yoru-mode .switch-btn {
+  background: rgba(255, 0, 51, 0.1);
+  border-color: rgba(255, 0, 51, 0.3);
+  color: #ffb3c1;
+}
+
+.yoru-mode .switch-btn:hover {
+  background: rgba(255, 0, 51, 0.2);
+  border-color: rgba(255, 0, 51, 0.5);
+  color: #fff;
+}
+
 
 /* --- Login Form Overrides --- */
 .login-form {
@@ -288,9 +412,19 @@ body {
   100% { transform: translateY(0) scale(1); opacity: 1; }
 }
 
+@keyframes revealRight {
+  0% { transform: translateX(-100px); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
 @keyframes float {
   0% { transform: translateY(0); }
   100% { transform: translateY(-15px); }
+}
+
+@keyframes pulseRed {
+  0% { filter: brightness(0.8) contrast(1.2) drop-shadow(0 0 30px rgba(255, 0, 0, 0.05)); }
+  100% { filter: brightness(0.85) contrast(1.2) drop-shadow(0 0 60px rgba(255, 0, 0, 0.25)); }
 }
 
 @keyframes fadeSlideRight {
@@ -322,28 +456,37 @@ body {
     height: auto;
     min-height: 100vh;
   }
-  .character-container {
+  .character-container, .yoru-mode {
     flex-direction: column;
   }
   .bg-overlay {
     background: linear-gradient(180deg, rgba(5,5,5,0.95) 0%, rgba(5,5,5,0.85) 50%, rgba(5,5,5,0.5) 100%);
   }
-  .character-showcase {
+  .character-showcase, .yoru-mode .character-showcase {
     position: relative;
     height: 60vh;
     order: 1;
+    justify-content: center;
+    padding: 0;
   }
-  .content-sidebar {
+  .yoru-mode .character-hero-img {
+    mask-image: linear-gradient(to top, transparent 2%, black 20%);
+    -webkit-mask-image: linear-gradient(to top, transparent 2%, black 20%);
+    object-position: center;
+  }
+  .content-sidebar, .yoru-mode .content-sidebar {
     width: 100%;
     height: auto;
     padding: 2rem;
     order: 2;
+    text-align: left;
   }
   .character-name {
     font-size: 3.5rem;
   }
-  .scroll-area {
+  .scroll-area, .yoru-mode .scroll-area {
     mask-image: none;
     -webkit-mask-image: none;
+    padding: 0 0 6rem 0;
   }
 }
