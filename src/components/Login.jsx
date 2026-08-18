@@ -12,7 +12,7 @@ function Login({ onLogin }) {
     setIsLoading(true);
 
     try {
-      const response = await fetch('/users.json');
+      const response = await fetch(`${import.meta.env.BASE_URL}users.json`);
       const users = await response.json();
       
       const user = users.find(u => u.username === username && u.password === password);
