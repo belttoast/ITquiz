@@ -304,7 +304,8 @@ body {
 }
 
 .family-info-card {
-  max-width: 550px;
+  width: 100%;
+  max-width: 900px;
   background: rgba(20, 20, 20, 0.4);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
