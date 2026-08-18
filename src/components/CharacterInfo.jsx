@@ -1,11 +1,12 @@
 import React from 'react';
+import asaImg from '../assets/asa.png';
 
 function CharacterInfo() {
   return (
     <div className="character-container">
       {/* Center Character Image */}
       <div className="character-showcase">
-        <img src="/Asa.png" alt="Asa Mitaka" className="character-hero-img" />
+        <img src={asaImg} alt="Asa Mitaka" className="character-hero-img" />
       </div>
 
       {/* Left Info Panel */}
