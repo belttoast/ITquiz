@@ -163,22 +163,23 @@ body {
 .content-sidebar {
   position: relative;
   z-index: 2;
-  width: 45%;
-  max-width: 650px;
+  width: 50%;
+  max-width: 800px;
   height: 100vh;
   padding: 4rem 3rem 0 5rem;
   display: flex;
   flex-direction: column;
   transition: all 0.8s ease;
+  word-break: break-word; /* Fix Thai text wrapping */
 }
 
 .yoru-mode .content-sidebar {
   padding: 4rem 5rem 0 3rem;
-  text-align: right;
+  text-align: left; /* Changed from right to left for better readability of long paragraphs */
 }
 
 .yoru-mode .info-section h2 {
-  flex-direction: row-reverse;
+  flex-direction: row; /* Changed from row-reverse so the line is on the right */
 }
 
 .character-name {
