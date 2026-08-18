@@ -31,7 +31,7 @@ function Login({ onLogin }) {
 
   return (
     <form className="login-form glass-panel" onSubmit={handleSubmit}>
-      <h1 className="title">IT Portal</h1>
+      <h1 className="title">Login</h1>
       <p style={{ color: '#aaa', marginBottom: '1rem' }}>Enter credentials to access character data.</p>
       
       {error && <div className="error-message">{error}</div>}
@@ -63,7 +63,7 @@ function Login({ onLogin }) {
       </div>
       
       <button type="submit" className="btn-primary" disabled={isLoading}>
-        {isLoading ? 'Authenticating...' : 'Access Terminal'}
+        {isLoading ? 'Authenticating...' : 'Login'}
       </button>
     </form>
   );
